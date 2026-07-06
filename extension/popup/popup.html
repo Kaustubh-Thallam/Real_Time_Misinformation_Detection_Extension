@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline'">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="popup.css">
+  <title>ClaimCheck</title>
+</head>
+<body>
+  <!-- Auth View -->
+  <div id="auth-view" class="auth-container" hidden>
+    <h2 id="auth-title">Sign In</h2>
+    <form id="auth-form">
+      <div class="form-group" id="name-group" hidden>
+        <label for="auth-name">Name</label>
+        <input type="text" id="auth-name" placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="auth-email">Email</label>
+        <input type="email" id="auth-email" placeholder="you@example.com" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="auth-password">Password</label>
+        <input type="password" id="auth-password" placeholder="••••••••" required minlength="8" autocomplete="current-password">
+      </div>
+      <div id="auth-error" class="error-state" hidden></div>
+      <button type="submit" class="btn-primary" id="auth-submit">Sign In</button>
+    </form>
+    <p style="text-align:center; margin-top: var(--sp-sm);">
+      <button class="link-btn" id="auth-toggle">Create account</button>
+    </p>
+    <p class="privacy-note" style="font-size:11px; color:var(--text-secondary); text-align:center; margin-top:var(--sp-sm);">
+      We only process text you highlight. We never read the rest of the page.
+    </p>
+  </div>
+
+  <!-- Main View -->
+  <div id="main-view" hidden>
+    <div class="quota-banner" id="quota-banner"></div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="empty-state">
+      <div class="icon">🔍</div>
+      <p>Highlight a sentence to verify it.</p>
+    </div>
+
+    <!-- Loading state -->
+    <div id="loading-state" class="loading" hidden>
+      <div class="spinner"></div>
+      <span style="font-size:var(--fs-sm); color:var(--text-secondary);">Checking claim…</span>
+    </div>
+
+    <!-- Error state -->
+    <div id="error-state" class="error-state" hidden>
+      <p id="error-msg">Couldn't reach verification service.</p>
+      <button class="retry-btn" id="retry-btn">Retry</button>
+    </div>
+
+    <!-- Result -->
+    <div id="result-state" hidden>
+      <div class="result-card">
+        <div class="header">
+          <span class="verdict-badge" id="verdict-badge"></span>
+          <span class="confidence" id="confidence"></span>
+        </div>
+        <p class="explanation" id="explanation"></p>
+        <a href="#" class="link-btn" id="open-sidepanel" style="display:block; margin-bottom:var(--sp-sm);">See full details →</a>
+      </div>
+    </div>
+
+    <p style="text-align:right; margin-top:var(--sp-xs);">
+      <button class="link-btn" id="logout-btn" style="font-size:11px;">Sign out</button>
+    </p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

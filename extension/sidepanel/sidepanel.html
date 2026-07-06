@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline'">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="sidepanel.css">
+  <title>ClaimCheck — Details</title>
+</head>
+<body>
+  <div class="panel-container">
+    <h1 class="panel-title">ClaimCheck</h1>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="empty-state">
+      <div class="icon">🔍</div>
+      <p>Highlight a sentence on any page and right-click → "Verify this claim"</p>
+    </div>
+
+    <!-- Loading state -->
+    <div id="loading-state" class="loading" hidden>
+      <div class="spinner"></div>
+      <span style="font-size:var(--fs-sm); color:var(--text-secondary);">Verifying claim…</span>
+    </div>
+
+    <!-- Error state -->
+    <div id="error-state" class="error-state" hidden>
+      <p id="error-msg">Couldn't reach verification service.</p>
+      <button class="retry-btn" id="retry-btn">Retry</button>
+    </div>
+
+    <!-- Result -->
+    <div id="result-state" hidden>
+      <div class="claim-text" id="claim-text"></div>
+
+      <div class="result-card">
+        <div class="header">
+          <span class="verdict-badge" id="verdict-badge"></span>
+          <span class="confidence" id="confidence"></span>
+        </div>
+
+        <p class="explanation" id="explanation"></p>
+
+        <h3 class="section-title">Sources</h3>
+        <ul class="sources-list" id="sources-list"></ul>
+
+        <details class="accordion">
+          <summary>Why this result?</summary>
+          <div class="detail-content" id="detail-content">
+            This verdict was determined by cross-referencing your highlighted claim
+            against trusted fact-checking databases and verified sources.
+          </div>
+        </details>
+
+        <div class="feedback" id="feedback">
+          <button id="fb-helpful" aria-label="Mark as helpful">👍 Helpful</button>
+          <button id="fb-not-helpful" aria-label="Mark as not helpful">👎 Not helpful</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

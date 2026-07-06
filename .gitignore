@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+.venv/
+venv/
+env/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Redis dump
+dump.rdb
+
+# Graphify
+graphify-out/
+
+# Node (if any tooling)
+node_modules/
+
+# Test
+.pytest_cache/
+htmlcov/
+.coverage

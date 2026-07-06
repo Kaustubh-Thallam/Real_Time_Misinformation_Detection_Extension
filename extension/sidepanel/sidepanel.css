@@ -1,0 +1,32 @@
+.panel-container {
+  padding: var(--sp-md);
+  min-width: 320px;
+  max-width: 420px;
+}
+
+.panel-title {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  margin-bottom: var(--sp-md);
+  letter-spacing: -0.5px;
+}
+
+.claim-text {
+  padding: var(--sp-sm) var(--sp-md);
+  margin-bottom: var(--sp-md);
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--color-context);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.section-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-xs);
+}
