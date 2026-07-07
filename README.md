@@ -68,32 +68,32 @@ Users encounter questionable claims daily on social media, news sites, and searc
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                    BROWSER (Chrome MV3)                       │
+│                    BROWSER (Chrome MV3)                      │
 │                                                              │
-│  ┌─────────────┐  ┌─────────────┐  ┌──────────────────────┐ │
+│  ┌──────────────┐  ┌─────────────┐  ┌──────────────────────┐ │
 │  │ Content      │  │ Popup       │  │ Side Panel           │ │
 │  │ Script       │  │ (Quick      │  │ (Full Details)       │ │
 │  │ (Selection)  │  │  Verdict)   │  │ • Sources            │ │
 │  └──────┬───────┘  └──────┬──────┘  │ • Explanation        │ │
-│         │                 │         │ • Feedback            │ │
+│         │                 │         │ • Feedback           │ │
 │         └────────┬────────┘         └──────────┬───────────┘ │
 │                  │                             │             │
 │           ┌──────▼─────────────────────────────▼───┐         │
-│           │       Background Service Worker         │         │
-│           │     (Context Menu + Message Relay)      │         │
-│           └──────────────────┬──────────────────────┘         │
-└──────────────────────────────┼────────────────────────────────┘
+│           │       Background Service Worker        │         │
+│           │     (Context Menu + Message Relay)     │         │
+│           └──────────────────┬─────────────────────┘         │
+└──────────────────────────────┼───────────────────────────────┘
                                │ HTTPS
                     ┌──────────▼──────────┐
-                    │   FastAPI Backend    │
-                    │   (Render.com)       │
+                    │   FastAPI Backend   │
+                    │   (Render.com)      │
                     ├─────────────────────┤
                     │                     │
                     │  ┌───────────────┐  │
-                    │  │ Auth Service  │  │    ┌─────────────┐
-                    │  │ JWT + Refresh │──┼───►│ PostgreSQL  │
+                    │  │ Auth Service  │  │    ┌──────────────┐
+                    │  │ JWT + Refresh │──┼───►│ PostgreSQL   │
                     │  │ Token Rotation│  │    │ Users, Tokens│
-                    │  └───────────────┘  │    └─────────────┘
+                    │  └───────────────┘  │    └──────────────┘
                     │                     │
                     │  ┌───────────────┐  │    ┌─────────────┐
                     │  │ Verification  │  │    │   Redis     │
@@ -103,9 +103,9 @@ Users encounter questionable claims daily on social media, news sites, and searc
                     │          │          │
                     └──────────┼──────────┘
                                │
-              ┌────────────────┼────────────────┐
-              │                │                │
-     ┌────────▼───┐   ┌───────▼──────┐  ┌──────▼──────┐
+              ┌────────────────┼───────────────┐
+              │                │               │
+     ┌────────▼───┐   ┌────────▼─────┐  ┌──────▼──────┐
      │ Wikipedia  │   │ Google Fact  │  │   Ollama    │
      │ API        │   │ Check API    │  │ (Llama 3.1) │
      └────────────┘   └──────────────┘  └─────────────┘
@@ -145,8 +145,8 @@ Input: "COVID vaccines cause autism"
                  │
                  ▼
 ┌─────────────────────────────────────┐
-│ STAGE 3: LLM Synthesis             │  ~1-3s
-│ • Ollama (Llama 3.1 8B)            │
+│ STAGE 3: LLM Synthesis              │  ~1-3s
+│ • Ollama (Llama 3.1 8B)             │
 │ • Prompt: claim + source snippets   │
 │ • Output: verdict, confidence %,    │
 │   plain-language explanation        │
@@ -257,7 +257,7 @@ pytest tests/ -v
 
 Expected output:
 ```
-tests/test_core.py::test_password_hash_and_verify         PASSED
+tests/test_core.py::test_password_hash_and_verify          PASSED
 tests/test_core.py::test_access_token_roundtrip            PASSED
 tests/test_core.py::test_access_token_expired              PASSED
 tests/test_core.py::test_hash_token_deterministic          PASSED
